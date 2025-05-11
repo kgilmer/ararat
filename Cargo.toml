@@ -4,3 +4,6 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+iced = "0.13.1"
+iced_test = "0.0.0"
+lazy_static = "1.5.0"
