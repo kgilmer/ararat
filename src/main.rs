@@ -5,19 +5,17 @@ use iced_layershell::{to_layer_message, Application};
 use iced_layershell::reexport::{Anchor, KeyboardInteractivity, Layer};
 use iced_layershell::settings::{LayerShellSettings, Settings, StartMode};
 use lazy_static::lazy_static;
-use std::sync::{Arc, Mutex};
 
 lazy_static! {
-    static ref PROGRAM_NAME: String = String::from("Elbey");
+    static ref PROGRAM_NAME: String = String::from("Aratrat");
 }
 
-/// Program entrypoint.  Just configures the app, window, and kicks off the iced runtime.
 fn main() -> Result<(), iced_layershell::Error> {
     let iced_settings = Settings {
         layer_settings: LayerShellSettings {
-            size: Some((320, 200)),
-            exclusive_zone: 200,
-            anchor: Anchor::all(),
+            size: Some((16, 0)), // 8 pixels wide, 0 for height means fill available
+            exclusive_zone: 16, // Optional: set an exclusive zone for the 8px width
+            anchor: Anchor::Left,
             start_mode: StartMode::Active,
             layer: Layer::Overlay,
             margin: (0, 0, 0, 0),
@@ -89,8 +87,7 @@ impl Application for Ararat {
             text(self.state.value).size(50).font(Font::MONOSPACE),
             button("Decrement").on_press(Message::Decrement)
         ]
-        .padding(20)
-        .align_x(iced::Alignment::Center)
+        .align_x(iced::Alignment::Start)
         .into()
     }
 }
